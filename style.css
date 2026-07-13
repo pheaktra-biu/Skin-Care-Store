@@ -1,0 +1,518 @@
+/* ==========================================================================
+   ១. ការកំណត់ទូទៅ (Global Setup)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kantumruy Pro', 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #f8ad9d; 
+    --dark: #2d3436;
+    --light: #fff5f3;
+}
+
+body {
+    background-color: #fff;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    padding: 40px 8%;
+}
+
+/* ==========================================================================
+   ២. របារ Menu ខាងលើ (Header & Navigation)
+   ========================================================================== */
+header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+header .logo span {
+    color: var(--primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--primary);
+}
+
+.login-btn {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+}
+
+.login-btn:hover {
+    background: #e09686;
+}
+
+/* ==========================================================================
+   ៣. ទំព័រដើម (Home Page - Hero Section)
+   ========================================================================== */
+.hero-section {
+    background-color: var(--light);
+    padding: 60px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-text-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text-box h1 {
+    font-size: 42px;
+    line-height: 1.5;
+    color: var(--dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-text-box p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.hero-image-box {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-box img {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(248, 173, 157, 0.3);
+}
+
+.btn-main {
+    display: inline-block;
+    padding: 14px 35px;
+    background: var(--dark);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-main:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(248, 173, 157, 0.4);
+}
+
+/* ==========================================================================
+   ៤. ទំព័រផលិតផល និងកន្លែងកម្មង់ទិញ (Product & Order Form Section)
+   ========================================================================== */
+.page-banner {
+    background-color: #fdf2f0;
+    text-align: center;
+    padding: 50px 20px;
+    border-bottom: 1px solid #f9dad4;
+}
+
+.page-banner h1 {
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.page-banner p {
+    font-size: 16px;
+    color: #666;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(248, 173, 157, 0.25);
+}
+
+.product-img-box {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-img-box img {
+    transform: scale(1.08);
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.product-desc {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 12px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e09686;
+    margin-bottom: 15px;
+}
+
+.product-card .btn-buy {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.product-card .btn-buy:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ស្ទីលផ្នែកបែបបទបញ្ជាទិញ */
+.order-section {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.order-box {
+    background: #fdf2f0;
+    border: 1px solid #f9dad4;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(248, 173, 157, 0.2);
+}
+
+.order-box h2 {
+    text-align: center;
+    color: var(--dark);
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.order-box p {
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 8px rgba(248, 173, 157, 0.5);
+}
+
+.btn-submit-order {
+    width: 100%;
+    padding: 14px;
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-submit-order:hover {
+    background: var(--primary);
+    box-shadow: 0 6px 15px rgba(248, 173, 157, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   ៥. ទំព័រអំពីយើង (About Page - Image Gallery)
+   ========================================================================== */
+.about-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid #f5efee;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item p {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(248, 173, 157, 0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   ៦. ផ្នែកខាងក្រោមគេ (Footer)
+   ========================================================================== */
+footer {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+/* Responsive សម្រាប់ទូរស័ព្ទ */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-text-box h1 {
+        font-size: 32px;
+    }
+    .hero-image-box img {
+        height: 300px;
+    }
+}
+/* ==========================================================================
+   ៨. ស្ទីលសម្រាប់ផ្ទាំង Login ឱ្យតូចស្រឡូនចំកណ្តាល (Login Page Styling)
+   ========================================================================== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh; /* ជួយទាញឱ្យមកចំកណ្តាលបញ្ឈរ */
+    background-color: #fff;
+    padding: 20px;
+}
+
+.login-card {
+    background: #fdf2f0; /* ពណ៌ផ្កាឈូកស្រាលទន់ */
+    border: 1px solid #f9dad4;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px; /* កំណត់ឱ្យប្រអប់តូចល្មមត្រឹម 400px មិនលាតធំពេក */
+    box-shadow: 0 10px 25px rgba(248, 173, 157, 0.25);
+    text-align: center;
+}
+
+.login-card h2 {
+    font-size: 26px;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.form-group-login {
+    margin-bottom: 20px;
+    text-align: left; /* ឱ្យអក្សរ Label រត់ទៅខាងឆ្វេងវិញដើម្បីងាយមើល */
+}
+
+.form-group-login label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.form-group-login input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group-login input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 8px rgba(248, 173, 157, 0.4);
+}
+
+.btn-login-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-login-submit:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(248, 173, 157, 0.4);
+}
